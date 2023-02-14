@@ -1,5 +1,3 @@
-#include <iostream>
-
 class Circle {
 private:
 	float radius;
@@ -16,14 +14,4 @@ public:
 	bool check_circle(Circle& other);
 };
 
-
-static void circle_test() {
-	Circle c1(2, 0, 0), c2(2, 0, 1);
-
-#define TOF(expr) (expr ? "true" : "false")
-	std::cout << "Does c1 instersects c2: " << TOF(c1.check_circle(c2)) << std::endl;
-
-	Circle c3(1, 0, 2), c4(1, 0, -2);
-
-	std::cout << "Does c3 instersects c4: " << TOF(c3.check_circle(c4)) << std::endl;
-}
+void circle_test();

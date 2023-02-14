@@ -1,7 +1,10 @@
 #include <math.h>
+#include <iostream>
 
 #include "circle.h"
 #include "triangle.h"
+
+using namespace std;
 
 void Circle::set(float radius, float cx, float cy) {
 	this->radius = radius;
@@ -38,4 +41,15 @@ bool Circle::check_circle(Circle& other) {
 	float dist = sqrt(dx * dx + dy * dy);
 
 	return dist < other.radius + this->radius;
+}
+
+void circle_test() {
+	Circle c1(2, 0, 0), c2(2, 0, 1);
+
+#define TOF(expr) (expr ? "true" : "false")
+	cout << "Does c1 instersects c2: " << TOF(c1.check_circle(c2)) << endl;
+
+	Circle c3(1, 0, 2), c4(1, 0, -2);
+
+	cout << "Does c3 instersects c4: " << TOF(c3.check_circle(c4)) << endl;
 }
