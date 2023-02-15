@@ -1,8 +1,17 @@
 #include <iostream>
+#include <math.h>
 
 #include "figure.h"
 
 using namespace std;
+
+#define EPSILON 0.001;
+#define PI 3.1415
+
+
+float angle(float x1, float y1, float x2, float y2) {
+  return acos(x1 * x2 + y1 * y2);
+}
 
 float dist(float x1, float y1, float x2, float y2) {
 	float dx = x2 - x1, dy = y2 - y1;
@@ -28,21 +37,40 @@ void Figure::show() {
 }
 
 bool Figure::is_right() {
-  return false;  
+  bool first = abs(angle(x2 - x1, y2 - y1, x4 - x1, y4 - y1) - PI / 2.0) < EPSILON;
+  bool second = abs(angle(x2 - x3, y2 - y3, x4 - x3, y4 - y3) - PI / 2.0) < EPSILON;
+
+  return first && second;
 }
 
 bool Figure::is_square() {
-  return false;  
+  float a = dist(x1, y1, x2, y2);
+  float b = dist(x2, y2, x3, y3);
+  float c = dist(x3, y3, x4, y4);
+  float d = dist(x4, y4, x1, y1);
+  return is_right() && a == b && a == c && a == d;
 }
 
 bool Figure::is_rhomb() {
-  return false;  
+  float a = dist(x1, y1, x2, y2);
+  float b = dist(x2, y2, x3, y3);
+  float c = dist(x3, y3, x4, y4);
+  float d = dist(x4, y4, x1, y1);
+  return a == b && a == c && a == d;
 }
 
 bool Figure::is_in_circle() {
-  return false;  
+  float a = dist(x1, y1, x2, y2);
+  float b = dist(x2, y2, x3, y3);
+  float c = dist(x3, y3, x4, y4);
+  float d = dist(x4, y4, x1, y1);
+
+  return abs((a + c) - (c + d)) < EPSILON;
 }
 
 bool Figure::is_out_circle() {
-  return false;  
+  float a1 = angle(x2 - x1, y2 - y1, x4 - x1, y4 - y1);
+  float a2 = angle(x2 - x3, y2 - y3, x4 - x3, y4 - y3);
+
+  return abs(a1 + a2 - PI) < EPSILON;
 }
