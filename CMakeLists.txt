@@ -10,3 +10,9 @@ add_executable(week2
 	week2/circle.cpp
 	week2/figure.cpp
 )
+
+add_executable(week3
+	week3/main.cpp
+	week3/equation.cpp
+	week3/rational.cpp
+)
