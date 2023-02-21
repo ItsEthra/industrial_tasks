@@ -4,7 +4,7 @@ private:
 
 
 public:
-  friend Rational add_rationals(Rational lhs, Rational rhs);
+  friend Rational sub_rationals(Rational lhs, Rational rhs);
 
   Rational(int numerator, int denominator);
   Rational();
@@ -14,7 +14,7 @@ public:
 
   Rational operator+(Rational rhs);
   inline Rational operator-(Rational rhs) {
-    return add_rationals(*this, rhs);
+    return sub_rationals(*this, rhs);
   }
 
   Rational operator++();

@@ -5,8 +5,20 @@
 
 using namespace std;
 
-Rational add_rationals(Rational lhs, Rational rhs) {
-	return Rational(lhs.numerator + rhs.numerator, lhs.denominator + rhs.denominator);
+Rational sub_rationals(Rational lhs, Rational rhs) {
+  Rational self = lhs;
+  if (self.denominator != rhs.denominator) {
+    self.numerator *= rhs.denominator;
+    self.denominator *= rhs.denominator;
+
+    rhs.numerator *= lhs.denominator;
+    rhs.denominator *= lhs.denominator;
+  }
+
+  Rational ratio = Rational();
+  ratio.set(self.numerator - rhs.numerator, self.denominator);
+
+  return ratio;
 }
 
 int main() {
@@ -31,6 +43,9 @@ int main() {
 	}
 	cout << "Sum: ";
 	sum.show();
+
+	cout << "Sub nums[0] - nums[1]: ";
+	(nums[0] - nums[1]).show();
 
 	return 0;
 }
