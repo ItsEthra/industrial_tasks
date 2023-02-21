@@ -17,7 +17,8 @@ public:
     return sub_rationals(*this, rhs);
   }
 
-  Rational operator++();
+  void operator++(int);
+  bool operator==(Rational rhs);
   bool operator>(Rational rhs);
   void operator=(Rational rhs);
 };

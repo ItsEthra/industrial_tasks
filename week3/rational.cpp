@@ -45,10 +45,12 @@ Rational Rational::operator+(Rational rhs) {
   return ratio;
 }
 
-Rational Rational::operator++() {
-  Rational copy = *this;
-  copy.set(copy.numerator + 1, copy.denominator);
-  return copy;
+void Rational::operator++(int) {
+  this->set(this->numerator + 1, this->denominator);
+}
+
+bool Rational::operator==(Rational rhs) {
+  return this->numerator == rhs.numerator && this->denominator == rhs.denominator;
 }
 
 bool Rational::operator>(Rational rhs) {

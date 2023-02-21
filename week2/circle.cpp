@@ -36,7 +36,7 @@ bool Circle::triangle_in(float a, float b, float c) {
 	return this->radius == expected_radius;
 }
 
-bool Circle::check_circle(Circle& other) {
+bool Circle::overlaps_with(Circle& other) {
 	float dx = other.cx - this->cx, dy = other.cy - this->cy;
 	float dist = sqrt(dx * dx + dy * dy);
 
@@ -47,9 +47,9 @@ void circle_test() {
 	Circle c1(2, 0, 0), c2(2, 0, 1);
 
 #define TOF(expr) (expr ? "true" : "false")
-	cout << "Does c1 instersects c2: " << TOF(c1.check_circle(c2)) << endl;
+	cout << "Does c1 instersects c2: " << TOF(c1.overlaps_with(c2)) << endl;
 
 	Circle c3(1, 0, 2), c4(1, 0, -2);
 
-	cout << "Does c3 instersects c4: " << TOF(c3.check_circle(c4)) << endl;
+	cout << "Does c3 instersects c4: " << TOF(c3.overlaps_with(c4)) << endl;
 }

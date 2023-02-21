@@ -35,6 +35,7 @@ int main() {
 		int n, d;
 		cin >> n >> d;
 		nums[i].set(n, d); 
+		nums[i].show();
 	}
 
 	Rational sum = nums[0];
@@ -47,5 +48,14 @@ int main() {
 	cout << "Sub nums[0] - nums[1]: ";
 	(nums[0] - nums[1]).show();
 
+	cout << "nums[0]++";
+	Rational copy = nums[0];
+	copy++;
+	copy.show();
+
+	cout << "nums[0] ==, > nums[1]: ";
+	cout << (nums[0] == nums[1]) << " " << (nums[0] > nums[1]) << endl;
+
+	delete[] nums;
 	return 0;
 }
