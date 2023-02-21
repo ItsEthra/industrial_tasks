@@ -8,8 +8,15 @@ Rational::Rational(int numerator, int denominator) {
   this->set(numerator, denominator);
 }
 
+Rational::Rational() : numerator(0), denominator(0) {}
+
 void Rational::set(int numerator, int denominator) {
-  if (denominator % numerator) {
+  if (denominator == 0) {
+    cout << "Denominator is 0" << endl;
+    exit(1);
+  }
+
+  if (denominator % numerator == 0) {
     denominator /= numerator;
     numerator = 1;
   }
@@ -23,7 +30,19 @@ void Rational::show() {
 }
 
 Rational Rational::operator+(Rational rhs) {
-  return Rational(this->numerator + rhs.numerator, this->denominator + rhs.denominator);
+  Rational self = *this;
+  if (self.denominator != rhs.denominator) {
+    self.numerator *= rhs.denominator;
+    self.denominator *= rhs.denominator;
+
+    rhs.numerator *= this->denominator;
+    rhs.denominator *= this->denominator;
+  }
+
+  Rational ratio = Rational();
+  ratio.set(self.numerator + rhs.numerator, self.denominator);
+
+  return ratio;
 }
 
 Rational Rational::operator++() {
