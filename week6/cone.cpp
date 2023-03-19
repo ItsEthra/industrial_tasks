@@ -12,7 +12,7 @@ void Cone::set(float cx, float cy, float cz, float radius, float height)  {
 }
 
 void Cone::print() {
-  fmt::print("Center: ({}, {}, {}). Radius: {}. Height: {}.\nArea: {}. Volume: {}\n",
+  fmt::print("Cone {{\n\tCenter: ({}, {}, {}). Radius: {}. Height: {}.\n\tArea: {}. Volume: {}\n}}\n",
     cx, cy, cz,
     radius,
     height,
@@ -24,7 +24,11 @@ void Cone::print() {
 #define PI 3.1415
 
 float Cone::area() {
-  return PI * radius * (radius + sqrt(height * height + radius * radius));
+  return PI * radius * radius + lateral_surface();
+}
+
+float Cone::lateral_surface() {
+  return PI * radius * sqrt(height * height + radius * radius);
 }
 
 float Cone::volume() {

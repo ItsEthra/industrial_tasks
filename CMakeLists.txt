@@ -21,4 +21,5 @@ add_executable(week3
 add_executable(week6
 	week6/main.cpp
 	week6/cone.cpp
+	week6/frustum.cpp
 )

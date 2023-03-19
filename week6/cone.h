@@ -1,4 +1,7 @@
+#pragma once
+
 class Cone {
+protected:
   float cx, cy, cz, radius, height;
 
 public:
@@ -14,5 +17,6 @@ public:
   void print();
 
   float area();
+  float lateral_surface();
   float volume();
 };

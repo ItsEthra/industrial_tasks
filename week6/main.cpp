@@ -1,12 +1,16 @@
 #include <iostream>
 
 #include "cone.h"
+#include "frustum.h"
 
 using namespace std;
 
 int main() {
-  Cone* cone = new Cone(5, 2);
+  Cone* cone = new Cone(5, 3);
   cone->print();
+
+  Frustum* frustum = new Frustum(5, 3, 1);
+  frustum->print();
 
   Cone* array = new Cone[3];
   for (int i = 0; i < 3; ++i) {
